@@ -183,6 +183,24 @@ footer ol a{color:#c9d6e3;word-break:break-word}
 .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
 .reveal.in{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}.g-bar{animation:none}}
+/* Phones only: remove everything that makes mobile scrolling heavy or "sticky" */
+@media (max-width:700px){
+  .nav{backdrop-filter:none;-webkit-backdrop-filter:none;background:var(--navy)}
+  .nav ul{overscroll-behavior-x:contain}
+  .progress{display:none}
+  .orb{display:none}
+  .reveal{opacity:1;transform:none;transition:none}
+  .g-bar{animation:none}
+  /* Timeline fits the screen: label on top, bar underneath, no sideways scrolling */
+  .gantt{overflow:visible;padding:18px 14px}
+  .gantt-inner{min-width:0}
+  .g-row{grid-template-columns:0 repeat(12,1fr);row-gap:6px;min-height:0;margin-bottom:12px}
+  .g-row .lbl{grid-column:1/-1;grid-row:1;padding:0;font-size:14px}
+  .g-row .g-bar{grid-row:2;height:22px;padding:0 8px;font-size:10px;overflow:hidden}
+  .g-head{margin-bottom:6px}
+  .g-head .m{font-size:10px}
+  .tbl-scroll{overflow:visible}
+}
 @media print{.nav,.read,.orb,.spin{display:none!important}.reveal{opacity:1;transform:none}section.block{padding:30px 0}}
 </style>
 </head>
@@ -812,7 +830,23 @@ footer ol a{color:#c9d6e3;word-break:break-word}
   var bar=document.getElementById('progress');
   var links=[].slice.call(document.querySelectorAll('#navlinks a'));
   var secs=links.map(function(a){return document.querySelector(a.getAttribute('href'))});
+  // Phones: do the work at most once per frame, and only slide the menu strip after the finger/momentum stops
+  var phone=window.matchMedia('(max-width:700px)'), ticking=false, stopTimer;
+  function onPhoneScroll(){
+    if(!ticking){ ticking=true; requestAnimationFrame(function(){ ticking=false; updateActive(false); }); }
+    clearTimeout(stopTimer); stopTimer=setTimeout(function(){ updateActive(true); },250);
+  }
+  function updateActive(slideStrip){
+    var cur=-1;
+    secs.forEach(function(s,i){ if(s && s.getBoundingClientRect().top<120) cur=i; });
+    links.forEach(function(a,i){
+      var on=i===cur; if(a.classList.contains('active')!==on) a.classList.toggle('active',on);
+      if(on && slideStrip && a.dataset.on!=='1'){ var ul=a.closest('ul'); ul.scrollTo({left:a.offsetLeft-(ul.clientWidth-a.offsetWidth)/2,behavior:'smooth'}); a.dataset.on='1'; }
+      if(!on) a.dataset.on='';
+    });
+  }
   function onScroll(){
+    if(phone.matches) return onPhoneScroll();
     var h=document.documentElement, max=h.scrollHeight-h.clientHeight;
     bar.style.width=(max>0?h.scrollTop/max*100:0)+'%';
     var cur=-1;
