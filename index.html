@@ -1,0 +1,850 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Factory360 Recommendations</title>
+<meta name="description" content="Strategic HR recommendations for Factory360, prepared for Gabriela Neves by FAU MAN 4301 students.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 55'%3E%3Cpath fill='%234FFFDB' d='M0 0h40v14H14v8h26v14H14v19H0z'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#001021; --navy-2:#0b2036; --navy-3:#14304d;
+  --mint:#4FFFDB; --mint-soft:#d9fff7; --mint-ink:#007a63;
+  --gold:#FCB730; --gold-soft:#fff1d1; --gold-ink:#8a5a00;
+  --paper:#f6f8fa; --card:#ffffff; --ink:#0d1b2a; --muted:#51606f; --line:#e1e6ec;
+  --radius:24px;
+  --head:"Space Grotesk",system-ui,sans-serif;
+  --body:"DM Sans",system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 18px/1.65 var(--body);-webkit-font-smoothing:antialiased}
+img{max-width:100%}
+a{color:inherit}
+h1,h2,h3,h4{font-family:var(--head);line-height:1.15;margin:0 0 .5em;letter-spacing:-.01em}
+h2{font-size:clamp(30px,4.4vw,48px)}
+h3{font-size:22px}
+p{margin:0 0 1em}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+@media (max-width:600px){.wrap{padding:0 16px} body{font-size:17px}}
+
+/* ---------- Nav ---------- */
+.nav{position:sticky;top:0;z-index:50;background:rgba(0,16,33,.92);backdrop-filter:blur(10px);color:#fff;border-bottom:1px solid rgba(79,255,219,.15)}
+.nav .wrap{display:flex;align-items:center;gap:20px;height:68px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;flex:none}
+.brand .mark{height:30px;width:auto;display:block}
+.brand .pill{background:var(--mint);color:var(--navy);font:700 15px var(--head);padding:5px 14px;border-radius:99px}
+.nav ul{display:flex;gap:4px;list-style:none;margin:0 0 0 auto;padding:0;overflow-x:auto;scrollbar-width:none}
+.nav ul::-webkit-scrollbar{display:none}
+.nav ul a{display:block;white-space:nowrap;text-decoration:none;font:500 14px var(--body);padding:7px 12px;border-radius:99px;color:#c9d6e3;transition:.2s}
+.nav ul a:hover,.nav ul a.active{background:var(--mint);color:var(--navy)}
+.progress{position:absolute;left:0;bottom:-1px;height:3px;background:linear-gradient(90deg,var(--mint),var(--gold));width:0;transition:width .1s}
+@media (max-width:860px){.brand .pill{display:none}}
+
+/* ---------- Hero ---------- */
+.hero{background:var(--navy);color:#fff;overflow:hidden;position:relative}
+.hero .wrap{padding-top:88px;padding-bottom:96px;position:relative;z-index:2}
+.eyebrow{display:inline-block;font:500 13px var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--mint);margin-bottom:18px}
+.hero h1{font-size:clamp(46px,8vw,104px);margin-bottom:.25em}
+.hero h1 .hl{color:var(--navy);background:var(--mint);padding:0 .28em;border-radius:99px;display:inline-block;transform:rotate(-2deg)}
+.hero .lead{font-size:clamp(19px,2.2vw,23px);color:#c9d6e3;max-width:680px}
+.hero .meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}
+.chip{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(255,255,255,.2);border-radius:99px;padding:8px 16px;font-size:15px;color:#e6eef6}
+.chip b{color:var(--gold);font-weight:700}
+.orb{position:absolute;border-radius:50%;filter:blur(2px);opacity:.9;z-index:1}
+.orb.a{width:340px;height:340px;right:-90px;top:-80px;background:radial-gradient(circle at 30% 30%,var(--mint),transparent 70%);opacity:.35;animation:float 9s ease-in-out infinite}
+.orb.b{width:220px;height:220px;right:18%;bottom:-90px;background:radial-gradient(circle at 40% 40%,var(--gold),transparent 70%);opacity:.3;animation:float 11s ease-in-out infinite reverse}
+.spin{position:absolute;right:7%;top:50%;transform:translateY(-50%);width:210px;height:210px;z-index:1;animation:rot 26s linear infinite;opacity:.9}
+.spin text{font:700 15px var(--head);letter-spacing:.32em;fill:var(--mint)}
+@keyframes rot{to{transform:translateY(-50%) rotate(360deg)}}
+@keyframes float{50%{transform:translateY(24px)}}
+@media (max-width:980px){.spin{display:none}}
+@media (prefers-reduced-motion:reduce){.orb,.spin{animation:none}}
+
+/* ---------- Sections ---------- */
+section.block{padding:88px 0}
+section.block.alt{background:#fff}
+section.block.dark{background:var(--navy);color:#fff}
+.sec-head{display:flex;gap:20px;align-items:flex-start;margin-bottom:36px}
+.num{flex:none;width:60px;height:60px;border-radius:18px;background:var(--navy);color:var(--mint);display:grid;place-items:center;font:700 22px var(--head)}
+.dark .num{background:var(--mint);color:var(--navy)}
+.sec-head .kicker{font:500 13px var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--mint-ink);margin-bottom:6px}
+.dark .sec-head .kicker{color:var(--mint)}
+.sec-head p{color:var(--muted);max-width:720px;margin:0;font-size:19px}
+.dark .sec-head p{color:#b9c8d6}
+.read{margin-left:auto;flex:none;display:flex;align-items:center;gap:8px;font:500 14px var(--body);color:var(--muted);cursor:pointer;user-select:none;border:1px solid var(--line);padding:8px 14px;border-radius:99px;background:#fff;transition:.2s}
+.read input{accent-color:var(--mint-ink);width:16px;height:16px;margin:0}
+.read.on{background:var(--mint);border-color:var(--mint);color:var(--navy)}
+.dark .read{background:transparent;border-color:rgba(255,255,255,.25);color:#c9d6e3}
+.dark .read.on{background:var(--mint);color:var(--navy)}
+@media (max-width:700px){.sec-head{flex-wrap:wrap}.read{margin-left:0}}
+
+.grid{display:grid;gap:20px}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g4{grid-template-columns:repeat(4,1fr)}
+@media (max-width:900px){.g3,.g4{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:640px){.g2,.g3,.g4{grid-template-columns:1fr}}
+
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:28px;position:relative}
+.alt .card{background:var(--paper)}
+.dark .card{background:var(--navy-2);border-color:var(--navy-3)}
+.card h3{margin-bottom:.4em}
+.card p:last-child,.card ul:last-child{margin-bottom:0}
+.card ul{padding-left:1.1em;margin:0 0 1em}
+.card li{margin-bottom:.35em}
+.card .ico{font-size:30px;line-height:1;margin-bottom:14px;display:block}
+.dark .card p,.dark .card li{color:#d3dfea}
+.card.feature{border:2px solid var(--navy)}
+.card.feature::before{content:"★ Top priority";position:absolute;top:-13px;left:24px;background:var(--gold);color:var(--navy);font:700 12px var(--body);letter-spacing:.06em;text-transform:uppercase;padding:4px 12px;border-radius:99px}
+
+.tag{display:inline-block;font:700 11px var(--body);letter-spacing:.08em;text-transform:uppercase;padding:4px 10px;border-radius:99px;margin-bottom:12px}
+.tag.new{background:var(--gold-soft);color:var(--gold-ink)}
+.tag.keep{background:var(--mint-soft);color:var(--mint-ink)}
+.tag.grow{background:#e7ecff;color:#2b3fa8}
+.tag.watch{background:#ffe3e3;color:#a12626}
+
+.callout{border-radius:var(--radius);padding:24px 28px;background:var(--navy);color:#fff;display:flex;gap:18px;align-items:flex-start;margin-top:24px}
+.callout .big{font:700 40px/1 var(--head);color:var(--mint);flex:none}
+.callout p{margin:0;color:#d3dfea}
+.callout.gold{background:var(--gold);color:var(--navy)}
+.callout.gold p{color:var(--navy)}
+.callout.gold .big{color:var(--navy)}
+
+.quote{font:500 clamp(22px,3vw,30px)/1.35 var(--head);border-left:6px solid var(--mint);padding:6px 0 6px 24px;margin:0 0 30px}
+.quote small{display:block;font:400 15px var(--body);color:var(--muted);margin-top:10px}
+.dark .quote small{color:#9fb2c4}
+
+/* TL;DR */
+.tldr{counter-reset:t}
+.tldr .card{padding-top:58px}
+.tldr .card::before{counter-increment:t;content:"0" counter(t);position:absolute;top:22px;left:28px;font:700 16px var(--head);color:var(--mint-ink)}
+
+/* Stats */
+.stat{text-align:left}
+.stat .v{font:700 clamp(34px,4vw,46px)/1 var(--head);color:var(--navy);margin-bottom:8px}
+.dark .stat .v{color:var(--mint)}
+.stat .l{font-size:15px;color:var(--muted)}
+.dark .stat .l{color:#b9c8d6}
+
+/* Lists */
+.checks{list-style:none;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:10px}
+.checks li{background:var(--mint-soft);color:var(--mint-ink);font:500 15px var(--body);padding:8px 14px;border-radius:99px}
+.checks li::before{content:"✓ ";font-weight:700}
+
+/* Table */
+.tbl{width:100%;border-collapse:collapse;font-size:16px;background:#fff;border-radius:var(--radius);overflow:hidden;border:1px solid var(--line)}
+.tbl th,.tbl td{padding:14px 18px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+.tbl th{background:var(--navy);color:#fff;font:500 14px var(--body);letter-spacing:.04em}
+.tbl tr:last-child td{border-bottom:0}
+.tbl td b{font-family:var(--head)}
+.tbl-scroll{overflow-x:auto;border-radius:var(--radius)}
+
+/* Timeline */
+.gantt{background:var(--navy-2);border-radius:var(--radius);padding:28px;overflow-x:auto}
+.gantt-inner{min-width:680px}
+.g-row{display:grid;grid-template-columns:220px repeat(12,1fr);align-items:center;gap:0;min-height:46px}
+.g-row .lbl{font:500 15px var(--body);color:#e6eef6;padding-right:14px}
+.g-head .m{font:500 12px var(--body);color:#8fa3b7;text-align:center}
+.g-bar{height:28px;border-radius:99px;display:flex;align-items:center;padding:0 12px;font:700 12px var(--body);color:var(--navy);white-space:nowrap;transform-origin:left;animation:grow .9s cubic-bezier(.2,.8,.2,1) both}
+@keyframes grow{from{transform:scaleX(0)}}
+.g-grid{background-image:linear-gradient(90deg,rgba(255,255,255,.06) 1px,transparent 1px);background-size:calc(100%/12) 100%}
+
+.phase{border-left:4px solid var(--mint);padding:4px 0 4px 22px;margin-bottom:34px}
+.phase .when{font:700 13px var(--body);letter-spacing:.1em;text-transform:uppercase;color:var(--gold)}
+.phase h3{margin:.25em 0 .5em;color:#fff}
+.phase .cols{display:grid;grid-template-columns:2fr 1fr 1fr;gap:22px}
+.phase .cols h4{font:700 12px var(--body);letter-spacing:.1em;text-transform:uppercase;color:var(--mint);margin-bottom:.5em}
+.phase ul{margin:0;padding-left:1.1em;color:#d3dfea;font-size:16px}
+.phase li{margin-bottom:.3em}
+@media (max-width:820px){.phase .cols{grid-template-columns:1fr}}
+
+/* Tools */
+.tool .name{font:700 26px var(--head);margin-bottom:2px}
+.tool .what{font:500 13px var(--body);letter-spacing:.08em;text-transform:uppercase;color:var(--mint-ink);margin-bottom:12px}
+
+/* Footer */
+footer{background:var(--navy);color:#c9d6e3;padding:88px 0 40px}
+footer h2{color:#fff}
+footer .team{display:flex;flex-wrap:wrap;gap:10px;margin:20px 0 34px}
+footer .team span{background:var(--navy-2);border:1px solid var(--navy-3);padding:8px 16px;border-radius:99px;color:#fff;font-size:15px}
+footer details{margin-top:40px;border-top:1px solid var(--navy-3);padding-top:24px}
+footer summary{cursor:pointer;font:500 16px var(--body);color:var(--mint)}
+footer ol{font-size:14px;line-height:1.55;color:#9fb2c4;padding-left:1.2em;margin-top:16px}
+footer ol a{color:#c9d6e3;word-break:break-word}
+.thanks{font:700 clamp(46px,8vw,96px)/1 var(--head);color:var(--mint);margin:0 0 10px}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:var(--navy);text-decoration:none;font:700 16px var(--body);padding:14px 24px;border-radius:99px;border:0;cursor:pointer;transition:transform .2s}
+.btn:hover{transform:translateY(-2px) rotate(-1deg)}
+.small{font-size:13px;color:#7f93a7;margin-top:40px}
+
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}.g-bar{animation:none}}
+@media print{.nav,.read,.orb,.spin{display:none!important}.reveal{opacity:1;transform:none}section.block{padding:30px 0}}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="fmark" viewBox="0 0 40 55"><path fill="#4FFFDB" d="M0 0h40v14H14v8h26v14H14v19H0z"/></symbol>
+</svg>
+
+<nav class="nav" aria-label="Sections">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Factory360 – back to top">
+      <img class="mark" src="https://factory360.com/wp-content/uploads/2022/07/logo-1.png" alt="Factory360"
+           onerror="this.outerHTML='<svg class=&quot;mark&quot; viewBox=&quot;0 0 40 55&quot; width=&quot;22&quot; height=&quot;30&quot; role=&quot;img&quot; aria-label=&quot;Factory360&quot;><use href=&quot;#fmark&quot;/></svg>'">
+      <span class="pill">Factory360</span>
+    </a>
+    <ul id="navlinks">
+      <li><a href="#tldr">Summary</a></li>
+      <li><a href="#heard">What we heard</a></li>
+      <li><a href="#people">People</a></li>
+      <li><a href="#ai">AI &amp; Tech</a></li>
+      <li><a href="#feedback">Feedback</a></li>
+      <li><a href="#benefits">Benefits</a></li>
+      <li><a href="#legal">Legal</a></li>
+      <li><a href="#budget">Budget</a></li>
+      <li><a href="#culture">Culture</a></li>
+      <li><a href="#roadmap">Roadmap</a></li>
+    </ul>
+  </div>
+  <div class="progress" id="progress"></div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="orb a"></div><div class="orb b"></div>
+  <svg class="spin" viewBox="0 0 200 200" aria-hidden="true">
+    <defs><path id="circ" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0"/></defs>
+    <text><textPath href="#circ">PEOPLE • CULTURE • GROWTH • 360° •</textPath></text>
+    <use href="#fmark" x="86" y="81" width="28" height="38"/>
+  </svg>
+  <div class="wrap">
+    <span class="eyebrow">Strategic HR Plan · Prepared for Gabriela Neves</span>
+    <h1>Olá, Gabriela! <br>Here's your <span class="hl">360°</span> plan.</h1>
+    <p class="lead">Our 32-page research, boiled down into one easy read. These are our recommendations to help Factory360 take on more projects, grow its margins, and use AI wisely — without losing the creativity and "work hard, play hard" culture that makes it special.</p>
+    <div class="meta">
+      <span class="chip">⏱ About <b>1 hour</b> to read</span>
+      <span class="chip">🗓 Built for the next <b>6–12 months</b></span>
+      <span class="chip">✓ Tick sections as you go — <b id="readcount">0/10</b> read</span>
+    </div>
+  </div>
+</header>
+
+<!-- ============ TL;DR ============ -->
+<section class="block" id="tldr">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="num">★</div>
+      <div>
+        <div class="kicker">If you only have 5 minutes</div>
+        <h2>The big ideas</h2>
+        <p>Factory360's challenge isn't finding clients — it's having enough hands when great opportunities show up. Everything in this plan builds on that.</p>
+      </div>
+      <label class="read"><input type="checkbox" data-sec="tldr"> Read</label>
+    </div>
+    <div class="grid g3 tldr">
+      <div class="card reveal"><h3>Build a flexible freelance team</h3><p>Hire one experienced full-time Freelance Manager to recruit, organize and lead a ready-to-go roster for last-minute projects.</p></div>
+      <div class="card reveal"><h3>AI training that fits each role</h3><p>Expand the executive AI budget to every department — tailored by position, with clear security rules and no wasted subscriptions.</p></div>
+      <div class="card reveal"><h3>Get help with hiring</h3><p>Add a part-time HR specialist (ideally from events) to screen, verify and onboard — so your time goes back to clients.</p></div>
+      <div class="card reveal"><h3>Make great feedback even better</h3><p>Keep your fast, specific feedback. Add 15-minute project wrap-ups, an anonymous survey, and more praise for wins.</p></div>
+      <div class="card reveal"><h3>Rewards people choose</h3><p>A yearly rewards budget where employees pick what matters to them, plus Employee of the Quarter and Year.</p></div>
+      <div class="card reveal"><h3>Stay ahead on freelancer law</h3><p>Your PEO and payroll approach is working. Keep it, and keep an updated state-by-state compliance guide as you grow.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 1. What we heard ============ -->
+<section class="block alt" id="heard">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="num">01</div>
+      <div>
+        <div class="kicker">Company overview</div>
+        <h2>What we heard from you</h2>
+        <p>Before recommending anything, we wanted to make sure we understood Factory360 the way you see it.</p>
+      </div>
+      <label class="read"><input type="checkbox" data-sec="heard"> Read</label>
+    </div>
+
+    <blockquote class="quote reveal">"Build value through experiential marketing by engaging with consumers in an organic way and delivering values."<small>— Factory360's mission, in your words</small></blockquote>
+
+    <div class="grid g2">
+      <div class="card reveal">
+        <span class="ico">🎪</span>
+        <h3>What Factory360 does</h3>
+        <p>Instead of just advertising, Factory360 lets people <i>experience</i> brands — pop-ups, branded events, installations, mobile tours, sampling, PR stunts. You run the whole journey: idea, design, production, digital, social, and measuring results (attendance, sign-ups, engagement, conversions).</p>
+      </div>
+      <div class="card reveal">
+        <span class="ico">💛</span>
+        <h3>Values &amp; culture</h3>
+        <p>Transparency, honesty, excellence and humor — all rooted in respect. A team-oriented, "work hard, play hard" environment where people support each other, grow together, and skip the drama.</p>
+      </div>
+    </div>
+
+    <h3 class="reveal" style="margin-top:44px">Your goals for the next 6–24 months</h3>
+    <div class="grid g3">
+      <div class="card reveal"><span class="ico">🙌</span><h3>More capacity</h3><p>A team that can take last-minute and extra projects your full-time staff simply don't have time for.</p></div>
+      <div class="card reveal"><span class="ico">📈</span><h3>Better margins</h3><p>Keep growing while increasing profit margins.</p></div>
+      <div class="card reveal"><span class="ico">🤖</span><h3>Smart AI adoption</h3><p>Use AI to boost productivity — but creativity and originality always come first.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 2. People ============ -->
+<section class="block" id="people">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="num">02</div>
+      <div>
+        <div class="kicker">HR strategy · Recruitment · Retention</div>
+        <h2>People &amp; staffing</h2>
+        <p>The heart of our plan: the right people available at the right time — without the cost of hiring a lot of full-time staff.</p>
+      </div>
+      <label class="read"><input type="checkbox" data-sec="people"> Read</label>
+    </div>
+
+    <div class="grid g2">
+      <div class="card feature reveal">
+        <span class="tag new">New role · Full-time</span>
+        <h3>Freelance Manager</h3>
+        <p>An experienced person who knows experiential marketing and can work independently. They would:</p>
+        <ul>
+          <li>Recruit and interview freelancers</li>
+          <li>Keep an up-to-date roster of who's available and their skills</li>
+          <li>Match freelancers to projects</li>
+          <li>Oversee the work so it meets Factory360's standards</li>
+        </ul>
+        <p><b>Why it matters:</b> when a rush project lands, qualified people are already lined up — so you say "yes" more often, protect margins, and take pressure off your current team.</p>
+      </div>
+      <div class="card reveal">
+        <span class="tag new">New role · Part-time</span>
+        <h3>HR Specialist</h3>
+        <p>Someone (ideally from the events industry) to help with interviewing, background checks/verification, and onboarding — freeing up the hours you currently spend interviewing.</p>
+        <p><b>Heads-up:</b> experienced people often prefer full-time work, so this role needs to be "sold." Lead with your great culture, flexibility where possible, room to grow, and benefits like medical, dental and 401(k) for eligible employees.</p>
+        <p><b>Final hiring decisions stay with you and your managers</b> — culture fit is too important to outsource.</p>
+      </div>
+    </div>
+
+    <h3 class="reveal" style="margin-top:44px">Who to hire: the Factory360 profile</h3>
+    <div class="grid g4">
+      <div class="card reveal"><span class="ico">⚡</span><h3>Timely &amp; responsive</h3><p>Deadlines and last-minute changes are part of the job.</p></div>
+      <div class="card reveal"><span class="ico">🤝</span><h3>Loyal</h3><p>A track record of staying in roles — not leaving after a year or two.</p></div>
+      <div class="card reveal"><span class="ico">😊</span><h3>Kind &amp; respectful</h3><p>Nice people who get along and keep the atmosphere great.</p></div>
+      <div class="card reveal"><span class="ico">💬</span><h3>Great communicators</h3><p>Projects cross departments, so clear communication keeps them smooth.</p></div>
+    </div>
+
+    <div class="grid g2" style="margin-top:20px">
+      <div class="card reveal">
+        <span class="tag grow">Improve</span>
+        <h3>Make hiring easier</h3>
+        <ul>
+          <li><b>Standard interview questions</b> and a scoring guide (background, experience, critical thinking).</li>
+          <li>Look for people who bring <b>new ideas and perspectives</b>, not just people who "fit in."</li>
+          <li>Approved AI tools can help prepare the process — people make the decisions.</li>
+          <li>Clear <b>onboarding on mission and values</b> so new hires know how they contribute.</li>
+        </ul>
+      </div>
+      <div class="card reveal">
+        <span class="tag grow">Improve</span>
+        <h3>Help people grow (and stay)</h3>
+        <ul>
+          <li>Training beyond AI: <b>communication, project management, new tech</b>.</li>
+          <li><b>Cross-department knowledge sharing</b> so everyone understands how the whole company works.</li>
+          <li>Treat freelancers by their <b>real working arrangement</b> — not all the same way.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 3. AI ============ -->
+<section class="block dark" id="ai">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="num">03</div>
+      <div>
+        <div class="kicker">Training · Technology · Security</div>
+        <h2>AI &amp; technology, the Factory360 way</h2>
+        <p>You've already started by giving the executive team an AI course budget. We recommend growing that into a company-wide plan — tailored, safe and cost-smart.</p>
+      </div>
+      <label class="read"><input type="checkbox" data-sec="ai"> Read</label>
+    </div>
+
+    <div class="grid g4">
+      <div class="card reveal"><span class="ico">🔍</span><h3>1. Map each role</h3><p>Look at every position: which tasks AI could improve, and which skills each person actually needs.</p></div>
+      <div class="card reveal"><span class="ico">🎯</span><h3>2. Train by department</h3><p>Creatives use AI to research and brainstorm while keeping ideas original. Project teams automate admin.</p></div>
+      <div class="card reveal"><span class="ico">👩‍🏫</span><h3>3. Pick great teachers</h3><p>Instructors who know AI <i>and</i> the events industry. Training days where people learn, then teach their teams.</p></div>
+      <div class="card reveal"><span class="ico">🔄</span><h3>4. Share monthly</h3><p>A monthly tech &amp; AI trends meeting where colleagues demo what's working.</p></div>
+    </div>
+
+    <div class="grid g2" style="margin-top:20px">
+      <div class="card reveal">
+        <span class="tag watch">Protect</span>
+        <h3>Clear AI rules, before connecting anything</h3>
+        <p>You raised cybersecurity as a real concern — we agree. Create simple guidelines on:</p>
+        <ul>
+          <li>Which AI tools are approved</li>
+          <li>What client and company information can (and can't) be shared</li>
+          <li>Security checks before connecting AI to email, spreadsheets or business apps</li>
+        </ul>
+        <p>Everyone completes guideline training <b>before</b> using AI with sensitive information.</p>
+      </div>
+      <div class="card reveal">
+        <span class="tag keep">Save money</span>
+        <h3>Test before you buy</h3>
+        <p>Not everyone needs the same tools, and subscriptions add up. Check each tool for <b>cost, security, whether it actually works, and impact on quality</b> before rolling it out.</p>
+        <p>Great example already in motion: automating the collection of potential-client info that used to be done by hand.</p>
+        <p><b>Golden rule:</b> AI supports people — it never replaces their creativity, judgment or client relationships.</p>
+      </div>
+    </div>
+
+    <h3 class="reveal" style="margin-top:44px">Three tools worth a look</h3>
+    <div class="grid g3">
+      <div class="card tool reveal">
+        <div class="name">Ashby</div><div class="what" style="color:var(--mint)">Recruiting platform</div>
+        <p>Organizes applications, tracks candidates and schedules interviews — helpful now that some roles get hundreds of applicants instead of ~10.</p>
+      </div>
+      <div class="card tool reveal">
+        <div class="name">LASSO</div><div class="what" style="color:var(--mint)">Event workforce</div>
+        <p>Built for managing event workers and schedules. Lets the Freelance Manager see who's available for upcoming events at a glance.</p>
+      </div>
+      <div class="card tool reveal">
+        <div class="name">Granola</div><div class="what" style="color:var(--mint)">AI meeting notes</div>
+        <p>Captures and organizes meeting notes so client details don't get lost between back-to-back meetings.</p>
+      </div>
+    </div>
+    <p class="reveal" style="color:#9fb2c4;margin-top:20px;font-size:16px">No extra hires needed to run these — the recruiter, Freelance Manager and current managers can own them. You'd mainly need a subscription budget and some training time.</p>
+  </div>
+</section>
+
+<!-- ============ 4. Feedback ============ -->
+<section class="block" id="feedback">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="num">04</div>
+      <div>
+        <div class="kicker">Performance appraisals · Communication</div>
+        <h2>Feedback &amp; performance</h2>
+        <p>Good news: you're already doing what we planned to recommend — fast, specific, factual feedback ("you missed a deadline"). So our goal is to make it even stronger, not to change it.</p>
+      </div>
+      <label class="read"><input type="checkbox" data-sec="feedback"> Read</label>
+    </div>
+
+    <div class="callout gold reveal" style="margin:0 0 24px">
+      <div class="big">✗</div>
+      <p><b>What we're NOT recommending:</b> monthly one-on-ones. With two managers (Creative and Accounts) each leading about 24 people, that would overload already-packed schedules.</p>
+    </div>
+
+    <div class="grid g3">
+      <div class="card reveal"><span class="tag keep">Keep</span><h3>Immediate, specific feedback</h3><p>Fix problems while they're small. It fits your values of transparency and honesty perfectly.</p></div>
+      <div class="card reveal"><span class="tag new">Add</span><h3>Kick-off expectations</h3><p>Before each project, managers share the process and what "great" looks like — fewer surprises later.</p></div>
+      <div class="card reveal"><span class="tag new">Add</span><h3>15-minute wrap-ups</h3><p>After each project (or weekly), a quick chat folded into existing meetings: what went right, what went wrong, what to do better.</p></div>
+      <div class="card reveal"><span class="tag new">Add</span><h3>Feedback goes both ways</h3><p>Invite honest feedback about the company, the team and managers — a safe space when something isn't working.</p></div>
+      <div class="card reveal"><span class="tag new">Add</span><h3>Anonymous survey or suggestion box</h3><p>For concerns people won't raise face-to-face. Helps everyone feel heard and valued.</p></div>
+      <div class="card reveal"><span class="tag grow">Grow</span><h3>Clear expectations &amp; simple data</h3><p>Set standards for communication, deadlines, teamwork and client satisfaction. Track workloads, response times and freelancer performance to spot issues early.</p></div>
+    </div>
+
+    <div class="grid g2" style="margin-top:20px;align-items:stretch">
+      <div class="card reveal" style="background:var(--navy);color:#fff;border:0">
+        <span class="tag new">The missing piece</span>
+        <h3 style="color:#fff">Celebrate the wins, too 🎉</h3>
+        <p style="color:#d3dfea">Most feedback today is corrective. Recognizing creativity, teamwork, deadlines met and great client service reinforces exactly the behavior you want more of.</p>
+      </div>
+      <div class="grid g2">
+        <div class="card stat reveal"><div class="v">10%</div><div class="l">of employees have ever been asked how they'd like to be recognized <i>(Gallup)</i></div></div>
+        <div class="card stat reveal"><div class="v">80%</div><div class="l">of employees who got meaningful feedback say they're fully engaged <i>(Gallup)</i></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 5. Benefits ============ -->
+<section class="block alt" id="benefits">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="num">05</div>
+      <div>
+        <div class="kicker">Compensation · Benefits · Rewards</div>
+        <h2>Benefits &amp; rewards</h2>
+        <p>Factory360's package is already strong — so our ideas are small additions that make people feel personally valued.</p>
+      </div>
+      <label class="read"><input type="checkbox" data-sec="benefits"> Read</label>
+    </div>
+
+    <div class="card reveal" style="margin-bottom:24px">
+      <h3>What you already offer 👏</h3>
+      <ul class="checks">
+        <li>Medical &amp; dental</li><li>401(k)</li><li>Maternity leave</li><li>Lactation accommodations</li>
+        <li>Bereavement leave</li><li>Paid Family &amp; Medical Leave</li><li>Paid vacation (grows with seniority)</li>
+        <li>Paid sick days</li><li>12 paid holidays</li><li>Commissions &amp; bonuses (some roles)</li><li>Finder's fee for new business</li>
+        <li>Salaries $50K – $350K+</li>
+      </ul>
+    </div>
+
+    <blockquote class="quote reveal">"Compensation strategies vary depending on the person."<small>— Walter Burton, retired marketing entrepreneur. Some people want time off, some want commission, some just want to be recognized.</small></blockquote>
+
+    <div class="grid g2">
+      <div class="card feature reveal">
+        <span class="tag new">Main recommendation</span>
+        <h3>A rewards budget where employees choose 🎁</h3>
+        <p>Set aside a yearly budget for rewards — and let people pick. <b>No more pizza Fridays.</b> Options could include:</p>
+        <ul>
+          <li>An extra paid day off</li>
+          <li>A certification or course they're excited about</li>
+          <li>A yearly team trip for the hardest-working team</li>
+        </ul>
+        <p><b>Employee of the Quarter</b> picks their reward. <b>Employee of the Year</b> gets something bigger — a bonus, a trophy, or a benefit of their choice.</p>
+      </div>
+      <div class="grid" style="gap:20px">
+        <div class="card reveal"><span class="tag new">New</span><h3>👶 Paternity leave</h3><p>Two paid weeks for new dads (an idea from John Cejka, VP of Operations at Air Esscentials) — add or expand if not already in your policy.</p></div>
+        <div class="card reveal"><span class="tag new">New</span><h3>🎂 Paid birthday</h3><p>An extra day off during your birthday month. Small gesture, big heart.</p></div>
+        <div class="card reveal"><span class="tag new">New</span><h3>🏫 Family flexibility</h3><p>Room for parents to attend school activities and important family events.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 6. Legal ============ -->
+<section class="block" id="legal">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="num">06</div>
+      <div>
+        <div class="kicker">Compliance · Freelancers · Hiring law</div>
+        <h2>Legal &amp; compliance</h2>
+        <p>Bottom line: <b>you're on the right path</b>. Running freelancers through payroll and full-time staff through a PEO already avoids most pitfalls. As the freelance team grows, a few rules deserve extra attention.</p>
+      </div>
+      <label class="read"><input type="checkbox" data-sec="legal"> Read</label>
+    </div>
+
+    <div class="grid g2">
+      <div class="card reveal">
+        <span class="tag watch">Know the rules</span>
+        <h3>Who counts as a freelancer?</h3>
+        <p>Federally, the Department of Labor uses the Fair Labor Standards Act (FLSA). States add their own tests:</p>
+        <ul>
+          <li><b>27 states</b> use the full "ABC test": the worker is (A) free from your control, (B) doing work outside your usual business, and (C) running their own independent business.</li>
+          <li><b>6 states</b> drop part B.</li>
+          <li><b>New York</b> is one of <b>18 states</b> using a "common-law control test" — it looks at who directs the work.</li>
+        </ul>
+      </div>
+      <div class="card reveal">
+        <span class="tag watch">New York</span>
+        <h3>"Freelance Isn't Free Act"</h3>
+        <p>NYC passed it in 2017 to make sure freelancers get paid on time. In 2024, New York State expanded it statewide (General Business Law, Article 44-A) with written-contract requirements and formal enforcement.</p>
+        <p>It's taken seriously: the Attorney General can seek <b>up to $25,000</b> in civil penalties for repeated violations, and NYC recovered <b>$500,000+</b> from Splashlight, a local creative production company, for paying freelancers late.</p>
+      </div>
+    </div>
+
+    <h3 class="reveal" style="margin-top:44px">If you expand: freelancer protection thresholds</h3>
+    <div class="tbl-scroll reveal">
+      <table class="tbl">
+        <thead><tr><th>State</th><th>Protections apply when a freelance job is worth…</th></tr></thead>
+        <tbody>
+          <tr><td><b>New York</b></td><td>$800 or more (over its set period)</td></tr>
+          <tr><td><b>Illinois</b></td><td>$500 or more within 120 days</td></tr>
+          <tr><td><b>California</b></td><td>$250 or more (over its set period)</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="reveal" style="margin-top:44px">What to do</h3>
+    <div class="grid g3">
+      <div class="card reveal"><span class="ico">⏩</span><h3>Speed up the Freelance Manager</h3><p>Rush jobs are when mistakes happen. A dedicated owner keeps contracts and payments clean — or use a third-party freelancer platform to limit liability.</p></div>
+      <div class="card reveal"><span class="ico">💲</span><h3>Salary ranges in job posts</h3><p>New York requires them. Other states have their own rules.</p></div>
+      <div class="card reveal"><span class="ico">📒</span><h3>One living compliance guide</h3><p>A shared document of each state's hiring and freelancer rules, kept up to date — with New York first.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 7. Budget ============ -->
+<section class="block alt" id="budget">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="num">07</div>
+      <div>
+        <div class="kicker">Budget · HR outsourcing · Economy</div>
+        <h2>Budget &amp; outsourcing</h2>
+        <p>Spend where it creates capacity; save where it doesn't.</p>
+      </div>
+      <label class="read"><input type="checkbox" data-sec="budget"> Read</label>
+    </div>
+
+    <div class="grid g2">
+      <div class="card reveal">
+        <span class="tag keep">Keep</span>
+        <h3>Your PEO</h3>
+        <p>Keep outsourcing payroll, benefits and HR compliance. It cuts admin work, brings in expertise, and keeps leadership focused on clients and growth. A full internal HR department doesn't make sense at Factory360's size.</p>
+      </div>
+      <div class="card reveal">
+        <span class="tag keep">Keep in-house</span>
+        <h3>Hiring decisions</h3>
+        <p>Interviews and final decisions stay with people who know the culture. You value responsible, hard-working, respectful team players — that judgment can't be outsourced.</p>
+      </div>
+      <div class="card reveal">
+        <span class="tag grow">Smarter spend</span>
+        <h3>Freelancers over extra full-timers</h3>
+        <p>Full-time hires mean salary, benefits, insurance and training — even in slow months. Freelancers scale up and down with the work.</p>
+      </div>
+      <div class="card reveal">
+        <span class="tag grow">Smarter spend</span>
+        <h3>AI by need, not by default</h3>
+        <p>Check what each department needs before buying subscriptions or courses. Same productivity, lower bill.</p>
+      </div>
+    </div>
+    <div class="callout reveal">
+      <div class="big">🌦</div>
+      <p><b style="color:#fff">Ready for any economy.</b> Inflation, high labor costs or clients cutting marketing budgets can change how many projects come in. A flexible team lets Factory360 adjust its workforce to match.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 8. Culture ============ -->
+<section class="block" id="culture">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="num">08</div>
+      <div>
+        <div class="kicker">Satisfaction · Competitive edge · Global view</div>
+        <h2>Culture &amp; competitive edge</h2>
+        <p>Your biggest advantage is the one nobody can copy: your people and your culture.</p>
+      </div>
+      <label class="read"><input type="checkbox" data-sec="culture"> Read</label>
+    </div>
+
+    <div class="grid g2">
+      <div class="card reveal">
+        <span class="ico">🏆</span>
+        <h3>Why Factory360 wins</h3>
+        <ul>
+          <li>All services under one roof — idea to results</li>
+          <li>Experience with big names (Amazon, Meta and more)</li>
+          <li>Focus on measurable results, not just pretty events</li>
+          <li><b>A team that loves working together</b></li>
+          <li>Soon: a freelance bench to say "yes" faster than competitors</li>
+        </ul>
+        <p>Competitors can copy meetings, AI tools or a freelance roster. They can't copy your experience, relationships, creativity and culture.</p>
+      </div>
+      <div class="card reveal">
+        <span class="ico">🌱</span>
+        <h3>Keeping employees happy</h3>
+        <ul>
+          <li><b>Shared training across departments</b> — builds understanding and connection</li>
+          <li><b>Monthly AI &amp; tech meetups</b> — learn, share ideas, bring new insights</li>
+          <li><b>Short project reviews</b> — people feel heard; problems get caught early</li>
+          <li><b>Freelance support</b> — less pressure on a team at full capacity</li>
+        </ul>
+        <p>None of this changes the culture — it amplifies what's already working.</p>
+      </div>
+      <div class="card reveal">
+        <span class="ico">🌎</span>
+        <h3>Cross-cultural awareness</h3>
+        <p>Not every idea lands the same way everywhere. A campaign that works for one audience could flop — or offend — another because of beliefs and traditions. Open-minded, respectful teams (and cross-department idea sharing) keep experiences memorable for the right reasons.</p>
+      </div>
+      <div class="card reveal">
+        <span class="ico">🗺</span>
+        <h3>Geopolitical &amp; legal watch</h3>
+        <p>World events rarely touch day-to-day work, but trade policy, economic shifts or conflicts can change global clients' marketing budgets. Employment and salary laws also differ by state — stay informed as the freelance team grows.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 9. Roadmap ============ -->
+<section class="block dark" id="roadmap">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="num">09</div>
+      <div>
+        <div class="kicker">Implementation timeline · Success metrics</div>
+        <h2>The 12-month roadmap</h2>
+        <p>No big changes all at once. Small, steady steps that keep the team focused on clients and projects.</p>
+      </div>
+      <label class="read"><input type="checkbox" data-sec="roadmap"> Read</label>
+    </div>
+
+    <div class="gantt reveal" role="img" aria-label="Timeline: Months 1–2 assess staffing; months 2–4 hire Freelance Manager and build AI training; months 1–6 feedback and recognition; months 3–6 recruitment and onboarding; months 6–12 evaluate and adjust.">
+      <div class="gantt-inner">
+        <div class="g-row g-head"><div></div>
+          <div class="m">M1</div><div class="m">M2</div><div class="m">M3</div><div class="m">M4</div><div class="m">M5</div><div class="m">M6</div><div class="m">M7</div><div class="m">M8</div><div class="m">M9</div><div class="m">M10</div><div class="m">M11</div><div class="m">M12</div>
+        </div>
+        <div class="g-row g-grid"><div class="lbl">Assess staffing &amp; priorities</div><div class="g-bar" style="grid-column:2/4;background:var(--mint)">Start</div></div>
+        <div class="g-row g-grid"><div class="lbl">Freelance Manager &amp; roster</div><div class="g-bar" style="grid-column:3/6;background:var(--gold);animation-delay:.1s">Top priority</div></div>
+        <div class="g-row g-grid"><div class="lbl">AI training &amp; tech plan</div><div class="g-bar" style="grid-column:3/6;background:#9fe8ff;animation-delay:.2s">Train</div></div>
+        <div class="g-row g-grid"><div class="lbl">Feedback &amp; recognition</div><div class="g-bar" style="grid-column:2/8;background:#ffd1e8;animation-delay:.3s">Ongoing</div></div>
+        <div class="g-row g-grid"><div class="lbl">Recruiting &amp; onboarding</div><div class="g-bar" style="grid-column:4/8;background:#c9c1ff;animation-delay:.4s">Improve</div></div>
+        <div class="g-row g-grid"><div class="lbl">Evaluate &amp; adjust</div><div class="g-bar" style="grid-column:7/14;background:#fff;animation-delay:.5s">Measure what worked</div></div>
+      </div>
+    </div>
+
+    <div style="margin-top:56px">
+      <div class="phase reveal">
+        <div class="when">Months 1–2</div>
+        <h3>Assess staffing needs &amp; set priorities</h3>
+        <div class="cols">
+          <div><h4>Do</h4><ul>
+            <li>Define the Freelance Manager role: marketing/events background, can run projects independently</li>
+            <li>Decide what a part-time HR person handles vs. what stays in-house</li>
+            <li>Plan upcoming maternity leave with HR — legally correct and clearly communicated</li>
+            <li>Inventory current AI use and spot tasks worth automating — before buying anything</li>
+          </ul></div>
+          <div><h4>Need</h4><ul><li>Role descriptions</li><li>Hiring budget</li><li>AI tool inventory</li></ul></div>
+          <div><h4>Measure</h4><ul><li>Projects accepted</li><li>Projects declined due to staffing</li></ul></div>
+        </div>
+      </div>
+      <div class="phase reveal" style="border-color:var(--gold)">
+        <div class="when">Months 2–4</div>
+        <h3>Hire the Freelance Manager &amp; build the roster</h3>
+        <div class="cols">
+          <div><h4>Do</h4><ul>
+            <li>Hire someone organized, a great communicator, who knows experiential marketing</li>
+            <li>Start small with experienced freelancers, then grow with demand</li>
+            <li>Build a freelancer database (profiles, résumés, skills) and an availability dashboard</li>
+            <li>Classify each worker by their actual arrangement; keep hiring compliant</li>
+          </ul></div>
+          <div><h4>Need</h4><ul><li>Manager salary &amp; benefits</li><li>Freelance labor budget</li><li>Recruiting/onboarding materials</li><li>Availability system</li></ul></div>
+          <div><h4>Measure</h4><ul><li>Qualified freelancers recruited</li><li>Projects done on time &amp; well</li><li>Client satisfaction &amp; <b>returning clients</b></li></ul></div>
+        </div>
+      </div>
+      <div class="phase reveal" style="border-color:#9fe8ff">
+        <div class="when">Months 2–4</div>
+        <h3>Develop AI training &amp; tech strategy</h3>
+        <div class="cols">
+          <div><h4>Do</h4><ul>
+            <li>Turn the executive AI budget into department-specific training</li>
+            <li>Find time-wasting admin tasks (e.g., lead info into spreadsheets)</li>
+            <li>Publish AI guidelines: approved tools, data-sharing limits, security checks</li>
+            <li>Launch monthly tech meetings to demo tools</li>
+          </ul></div>
+          <div><h4>Need</h4><ul><li>Training materials &amp; time</li><li>Cybersecurity training</li><li>Budget to test tools</li></ul></div>
+          <div><h4>Measure</h4><ul><li>Employees trained on approved tools</li><li>Time saved per task</li><li>Processes automated</li><li>Subscription cost vs. results</li></ul></div>
+        </div>
+      </div>
+      <div class="phase reveal" style="border-color:#ffd1e8">
+        <div class="when">Months 1–6</div>
+        <h3>Strengthen feedback &amp; recognition</h3>
+        <div class="cols">
+          <div><h4>Do</h4><ul>
+            <li>Keep fast, specific feedback; add 15-minute reviews after major projects inside existing meetings</li>
+            <li>Launch an anonymous survey / suggestion box</li>
+            <li>Set the yearly rewards budget and reward menu; start Employee of the Quarter</li>
+          </ul></div>
+          <div><h4>Need</h4><ul><li>Manager time</li><li>A feedback channel</li><li>Rewards budget</li></ul></div>
+          <div><h4>Measure</h4><ul><li>Survey results</li><li>Participation in reviews</li><li>Do people feel appreciated?</li></ul></div>
+        </div>
+      </div>
+      <div class="phase reveal" style="border-color:#c9c1ff">
+        <div class="when">Months 3–6</div>
+        <h3>Improve recruiting, onboarding &amp; development</h3>
+        <div class="cols">
+          <div><h4>Do</h4><ul>
+            <li>Standard interview questions &amp; scoring</li>
+            <li>Part-time HR pro coordinates interviews and screens candidates</li>
+            <li>Transparent salary ranges; compliant postings</li>
+            <li>Onboarding that teaches mission &amp; values</li>
+          </ul></div>
+          <div><h4>Need</h4><ul><li>Checklists &amp; templates</li><li>Manager training</li><li>Approved AI tools</li><li>HR support budget</li></ul></div>
+          <div><h4>Measure</h4><ul><li>Time to fill roles</li><li>Time to review applicants</li><li>Retention</li><li>Freelancer re-hire rate &amp; quality</li></ul></div>
+        </div>
+      </div>
+      <div class="phase reveal" style="border-color:#fff">
+        <div class="when">Months 6–12</div>
+        <h3>Evaluate results &amp; adjust</h3>
+        <div class="cols">
+          <div><h4>Do</h4><ul>
+            <li>Compare results to the Month 1–2 baseline</li>
+            <li>Expand what works; drop what doesn't</li>
+            <li>Keep listening to employees — culture is the secret sauce</li>
+          </ul></div>
+          <div><h4>Ask</h4><ul><li>More projects without overwhelming the team?</li><li>Is AI boosting productivity?</li><li>Is hiring faster?</li></ul></div>
+          <div><h4>Measure</h4><ul><li>Revenue from new projects vs. freelance costs</li><li><b>Profit margins</b>, not just revenue</li><li>Employee satisfaction</li></ul></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Footer ============ -->
+<footer>
+  <div class="wrap">
+    <p class="thanks">Obrigado, Gabriela!</p>
+    <p style="font-size:20px;max-width:720px">Thank you for your time, your openness, and for letting us learn from Factory360. We hope these ideas help you keep creating experiences people never forget.</p>
+    <div class="team">
+      <span>Monika Castellanos</span><span>Jesus Yedra</span><span>Mcpherson Vante</span><span>Spenser Welch</span><span>Jose Mora</span><span>Jairo Jaimes</span>
+    </div>
+    <p style="color:#9fb2c4;font-size:15px;margin:0">Strategic Human Resource Management (MAN 4301) · Florida Atlantic University · Dr. Susana Fernandez · October 2026</p>
+    <p style="margin-top:28px"><a class="btn" href="#top">↑ Back to the top</a></p>
+
+    <details>
+      <summary>Sources we used</summary>
+      <ol>
+        <li>Ashby — All-in-one recruiting software. <a href="https://www.ashbyhq.com/">ashbyhq.com</a></li>
+        <li>Basil (2026). US freelancer compliance by state. <a href="https://basil.so/freelancer-compliance-map">basil.so/freelancer-compliance-map</a></li>
+        <li>ClearCompany (2024). 5 performance appraisal best practices. <a href="https://clearcompany.com/resources/blog/best-practices-for-creating-an-employee-performance-review-program">clearcompany.com</a></li>
+        <li>NYC DCWP (2026). DCWP wins over $500,000 in restitution for freelancers. <a href="https://www.nyc.gov/site/dca/news/021-26/dcwp-wins-500-000-restitution-freelancers-holds-production-company-accountable-for">nyc.gov</a></li>
+        <li>Factory360 — Experiential marketing agency. <a href="https://factory360.com/">factory360.com</a></li>
+        <li>NY Department of Labor — Freelance Isn't Free Act. <a href="https://dol.ny.gov/freelance-isnt-free-act">dol.ny.gov</a></li>
+        <li>Granola — The AI notepad. <a href="https://www.granola.ai/">granola.ai</a></li>
+        <li>Harter, J. (2023). A great manager's most important habit. Gallup. <a href="https://www.gallup.com/workplace/505370/great-manager-important-habit.aspx">gallup.com</a></li>
+        <li>LASSO — Live events software. <a href="https://www.lasso.io/">lasso.io</a></li>
+        <li>NIST (2024). AI Risk Management Framework: Generative AI Profile. <a href="https://doi.org/10.6028/nist.ai.600-1">doi.org/10.6028/nist.ai.600-1</a></li>
+        <li>U.S. Department of Labor (2024). Fact Sheet 13: Employment relationship under the FLSA. <a href="https://www.dol.gov/agencies/whd/fact-sheets/13-flsa-employment-relationship">dol.gov</a></li>
+      </ol>
+    </details>
+    <p class="small">Factory360 name, logo and colors belong to Factory360. Prepared as a student consulting project.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // Reveal on scroll
+  var els=document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{rootMargin:'0px 0px -40px 0px'});
+    els.forEach(function(el){io.observe(el)});
+  } else els.forEach(function(el){el.classList.add('in')});
+
+  // Scroll progress + active nav link
+  var bar=document.getElementById('progress');
+  var links=[].slice.call(document.querySelectorAll('#navlinks a'));
+  var secs=links.map(function(a){return document.querySelector(a.getAttribute('href'))});
+  function onScroll(){
+    var h=document.documentElement, max=h.scrollHeight-h.clientHeight;
+    bar.style.width=(max>0?h.scrollTop/max*100:0)+'%';
+    var cur=-1;
+    secs.forEach(function(s,i){ if(s && s.getBoundingClientRect().top<120) cur=i; });
+    links.forEach(function(a,i){
+      var on=i===cur; a.classList.toggle('active',on);
+      if(on && a.dataset.on!=='1'){ a.scrollIntoView({block:'nearest',inline:'center'}); }
+      a.dataset.on=on?'1':'';
+    });
+  }
+  window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
+
+  // "Mark as read" checklist (remembered in this browser only)
+  var KEY='f360-read', state={};
+  try{ state=JSON.parse(localStorage.getItem(KEY))||{}; }catch(e){}
+  var boxes=[].slice.call(document.querySelectorAll('.read input'));
+  var count=document.getElementById('readcount');
+  function update(){
+    var n=0;
+    boxes.forEach(function(b){ b.parentNode.classList.toggle('on',b.checked); if(b.checked) n++; });
+    count.textContent=n+'/'+boxes.length;
+  }
+  boxes.forEach(function(b){
+    b.checked=!!state[b.dataset.sec];
+    b.addEventListener('change',function(){
+      state[b.dataset.sec]=b.checked;
+      try{ localStorage.setItem(KEY,JSON.stringify(state)); }catch(e){}
+      update();
+    });
+  });
+  update();
+})();
+</script>
+</body>
+</html>
